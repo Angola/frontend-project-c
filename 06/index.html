@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="Vue">
+        <header>
+            <nav class="navbar navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">書籍検索アプリ</a>
+                <a class="btn btn-primary border-white" style="width: 100px;" href="./bookmark.html">Bookmark</a>
+            </nav>
+        </header>
+        
+        <main class="p-3">
+            <div class="mb-2 d-flex" style="width: 100%;">
+                <input class="form-control input-lg" v-model="tempSearch" type="text" placeholder="Search for something..." aria-label="Search">
+                <!-- <button class="btn btn-info text-nowrap" @click="clickSearch()" type="button">Search</button> -->
+            </div>
+            <div v-if="displayList.length !== 0">
+                <ul class="list-group mb-3">
+                    <li v-for="(item, key) in displayList" class="list-group-item p-0">
+                        <div class="p-3 small list-item-title" @click="clickMenu(item.id)" :class="{'bg-rgiht-blue': isBookmark(item.id) }">{{ item.title }}</div>
+                        <div :class="{'d-none': !item.open }">
+                            <div class="d-flex p-3 border-top">
+                                <div class="image-laoyut mr-3">
+                                    <img :src="item.image" alt="">
+                                </div>
+                                <div>
+                                    <p class="small">{{ item.title }}</p>
+                                    <div class="mb-2 small">
+                                        <p class="m-0">著者：{{item.author}}</p>
+                                        <p class="m-0">価格：{{item.price | price}}円</p>
+                                        <p class="m-0">発売日：{{item.release_date | moment}}</p>
+                                    </div>
+                                    <button class="btn btn-sm" :class="isBookmark(item.id) ? 'btn-danger' : 'btn-primary'" @click="toggleBookmark(item)">
+                                        <span class="small" v-if="isBookmark(item.id)">ブックマーク削除</span>
+                                        <span class="small" v-else>ブックマーク</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <nav aria-label="Page navigation example">
+                    <div class="pagination justify-content-center">
+                        <li class="page-item" :class="{'disabled' : isNotPrev}"><button class="page-link" @click="prev()" :disabled="isNotPrev">‹‹</button></li>
+                        <li class="page-item" :class="{'active' : page === num - 1}" v-for="num in pages"><button class="page-link" @click="clickPage(num)">{{ num }}</button></li>
+                        <li class="page-item" :class="{'disabled' : isNotNext}"><button class="page-link" @click="next()" :disabled="isNotNext">››</button></li>
+                    </div>
+                </nav>
+            </div>
+            <div class="mt-2 alert alert-info small" v-text="'書籍が見つかりませんでした。'" v-else>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ja.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="box" id="Vue">
+	<div class="clerafix mb10">
+		<input type="text" v-model="text" class="w300 inpTxt01" @keydown="onKeydown">
+		<button class="inpBtn01" @click="push">追加</button>
+		<button class="inpBtn02" @click="clear">全て削除</button>
+	</div>
+	<ul class="lastItem todoList">
+		<li v-for="(item,index) in list" :key="index">
+			{{index + 1}}.<span class="ml10">{{item.text}}</span>
+			<a class="disRight" href="javascript:void(0)" @click="slice(index)">削除</a>
+		</li>
+	</ul>
+</div>
+<script src="./main.js"></script>
+</body>
+</html>

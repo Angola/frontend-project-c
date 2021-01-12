@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+
+/* ------------------------------------------------------------
+init
+------------------------------------------------------------ */
+
+html {
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1.3rem;
+	font-size: 13px;
+}
+
+em, strong {
+    font-style: normal;
+    font-weight: bold;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+/* ------------------------------------------------------------
+clearfix
+------------------------------------------------------------ */
+.clearfix:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	content: ".";
+}
+
+/* ------------------------------------------------------------
+Parts
+------------------------------------------------------------ */
+
+.box{
+	border-radius: 3px;
+	padding: 10px;
+	width: 500px;
+}
+
+ul.todoList{
+	border-radius: 3px;
+	overflow: auto;
+}
+
+ul.todoList li{
+	border-bottom: 1px dotted #cccccc;
+	padding: 10px;
+	position: relative;
+	cursor: pointer;
+	font-size: 120%;
+}
+
+ul.todoList li .disRight{
+	position: absolute;
+	text-decoration: none;
+	right: 10px;
+}
+
+ul.todoList li:last-child{
+	border-bottom: none;
+}
+
+.inpBtn01{
+	padding: 8px 20px;
+	background: #337ab7;
+	border: 1px solid #337ab7;
+	border-radius: 3px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.inpBtn02{
+	padding: 8px 20px;
+	background: #d9534f;
+	border: 1px solid #d9534f;
+	border-radius: 3px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+
+.inpTxt01{
+	border: 1px solid #cccccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size:  138.5%;
+	padding: 5px;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+
+.inpTxt01:focus{
+	background: #CDE7F1;
+}
+
+.ml10{
+	margin-left: 10px;
+}
+
+.mb10{
+	margin-bottom: 10px;
+}

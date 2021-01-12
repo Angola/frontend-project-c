@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="Vue">
+        <header>
+            <nav class="navbar navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">書籍検索アプリ</a>
+                <a class="btn btn-primary border-white" style="width: 100px;" href="./index.html">Top</a>
+            </nav>
+        </header>
+    
+        <main class="p-3">
+            <h3 class="mb-3">Bookmark</h3>
+            <div v-if="bookmarkList.length !== 0">
+                <div class="card mb-3" v-for="item in bookmarkList">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="image-laoyut mr-3">
+                                <img :src="item.image" alt="">
+                            </div>
+                            <div>
+                                <p class="small">{{ item.title }}</p>
+                                <div class="mb-2 small">
+                                    <p class="m-0">著者：{{item.author}}</p>
+                                    <p class="m-0">価格：{{item.price | price}}円</p>
+                                    <p class="m-0">発売日：{{item.release_date | moment}}</p>
+                                </div>
+                                <button class="btn btn-sm btn-danger" @click="sliceBookmark(item.id)">
+                                    <span class="small">ブックマーク削除</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-info small" v-text="'ブックマークは現在登録されていません。'" v-else>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ja.js"></script>
+    <script src="bookmark.js"></script>
+</body>
+
+</html>
